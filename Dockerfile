@@ -4,9 +4,10 @@ ARG HBASE_VERSION=2.6.0
 
 WORKDIR /app
 
-RUN apk add jq bash
+RUN apk add jq
 
-RUN URL=`wget -q -O - 'https://www.apache.org/dyn/closer.cgi?as_json=1' | jq --raw-output '.preferred'` wget -q -O - $URL/hbase/${HBASE_VERSION}/hbase-${HBASE_VERSION}-bin.tar.gz \
+RUN URL=`wget -q -O - 'https://www.apache.org/dyn/closer.cgi?as_json=1' | jq --raw-output '.preferred'` \
+    && wget -q -O - ${URL}/hbase/${HBASE_VERSION}/hbase-${HBASE_VERSION}-bin.tar.gz \
     | tar zxf -
 
 RUN mv hbase-* hbase
