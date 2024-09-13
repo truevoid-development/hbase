@@ -1,6 +1,6 @@
 FROM alpine AS base
 
-ARG HBASE_VERSION
+ARG HBASE_VERSION=2.6.0
 
 WORKDIR /app
 
