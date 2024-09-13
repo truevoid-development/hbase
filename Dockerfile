@@ -4,6 +4,8 @@ ARG HBASE_VERSION=2.6.0
 
 WORKDIR /app
 
+RUN apk add jq
+
 RUN wget -q -O - $(wget -q -O - 'https://www.apache.org/dyn/closer.cgi?as_json=1' \
         | jq --raw-output '.preferred' \
     )/hbase/${HBASE_VERSION}/hbase-${HBASE_VERSION}-bin.tar.gz \
